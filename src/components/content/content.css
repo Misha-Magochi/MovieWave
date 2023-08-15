@@ -1,0 +1,6 @@
+.content-container {
+    max-width: 1000px;
+    width: 100%;
+    background-color: rgb(255, 253, 253);
+    height: 15em;
+}
