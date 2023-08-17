@@ -1,12 +1,12 @@
 import React from "react";
-import { Layout} from "antd";
+import { Layout } from "antd";
 
+const { Footer: AntdFooter } = Layout;
 
 const Footer = () => {
-    return (
-        <Layout style={{ height: "60px" }}>
-      </Layout>
-    )
+  return (
+    <AntdFooter style={{ textAlign: 'center' }}>Ant Design ©2023 Created by Ant UED</AntdFooter>
+  )
 };
 
 export default Footer;

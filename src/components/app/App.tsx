@@ -1,34 +1,24 @@
 import React, { Component } from 'react'
 
-import HeaderMenu from '../header/Header-menu';
-import NavMenu from '../nav-menu/Nav-menu';
-import Sidebar from '../side-bar/Side-bar';
-import Content from '../content/Content';
+import { Layout } from 'antd';
+import Header from '../header';
 import Footer from '../footer/Footer';
+import ContentBody from '../content/Content';
 
 import './app.css'
-import { Layout } from 'antd';
-import { Header } from 'antd/es/layout/layout';
 
 class App extends Component {
 
-    render () {
-    return (
-        <Layout>
-            <Header style={{ display: 'flex', alignItems: 'center' }}>
-            <div className="demo-logo" />
-            <HeaderMenu />
-            </Header>
+    render() {
+        return (
             <Layout>
-                <NavMenu/>
-                <Layout style={{ padding: '0 24px 24px' }}>
-                    <Sidebar />
-                    <Content />
-                    <Footer />
-                </Layout>
+                <Header />
+                <ContentBody>
+
+                </ContentBody>
+                <Footer />
             </Layout>
-        </Layout>
-    )
+        )
     }
 }
 
