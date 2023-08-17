@@ -32,16 +32,16 @@ const Sidebar: React.FC<SiderProps> = (props) => {
   } = theme.useToken();
 
   return (
-    <Layout style={{ padding: '24px 0', background: colorBgContainer }}>
     <Sider style={{ background: colorBgContainer }} width={200}>
       <Menu
+        theme='dark'
         mode="inline"
-        defaultSelectedKeys={[]}
-        style={{ height: '100%', borderRight: 0  }}
+        defaultSelectedKeys={['1']}
+        defaultOpenKeys={['sub1']}
+        style={{ height: '100%' }}
         items={items2}
       />
     </Sider>
-  </Layout>
   );
 };
 
