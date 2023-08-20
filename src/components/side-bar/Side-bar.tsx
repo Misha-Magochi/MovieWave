@@ -1,9 +1,12 @@
 import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
 import type { MenuProps, SiderProps } from 'antd';
 import { Layout, Menu, theme } from 'antd';
-import React from 'react';
+import axiosinstans from '../lib/axios';
+import React, {useState, useEffect} from 'react';
+import { AxiosResponse } from 'axios';
 
 const { Sider } = Layout;
+
 
 
 const items2: MenuProps['items'] = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
@@ -14,7 +17,6 @@ const items2: MenuProps['items'] = [UserOutlined, LaptopOutlined, NotificationOu
       key: `sub${key}`,
       icon: React.createElement(icon),
       label: `sidenav ${key}`,
-
       children: new Array(4).fill(null).map((_, j) => {
         const subKey = index * 4 + j + 1;
         return {
@@ -30,6 +32,20 @@ const Sidebar: React.FC<SiderProps> = (props) => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+
+  const [sidebarData, setSidebarData] = useState([]);
+
+  useEffect(() => {
+    axiosinstans.get('/{server-url}/sidebar-link')
+      .then((response: AxiosResponse) => {
+        const responseData = response.data;
+        console.log(responseData);
+        setSidebarData(responseData);
+      })
+      .catch((error: any) => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
 
   return (
     <Sider style={{ background: colorBgContainer }} width={200}>
