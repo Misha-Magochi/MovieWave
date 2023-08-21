@@ -4,6 +4,7 @@ import { Layout, Menu, theme } from 'antd';
 import axiosinstans from '../lib/axios';
 import React, {useState, useEffect} from 'react';
 import { AxiosResponse } from 'axios';
+import expressServer from '../lib/axios'; 
 
 const { Sider } = Layout;
 
@@ -36,7 +37,7 @@ const Sidebar: React.FC<SiderProps> = (props) => {
   const [sidebarData, setSidebarData] = useState([]);
 
   useEffect(() => {
-    axiosinstans.get('/{server-url}/sidebar-link')
+    axiosinstans.get('/')
       .then((response: AxiosResponse) => {
         const responseData = response.data;
         console.log(responseData);
