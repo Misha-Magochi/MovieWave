@@ -1,8 +1,9 @@
-import type { SiderProps } from 'antd';
+import { Avatar, SiderProps } from 'antd';
 import { Layout, Menu, theme } from 'antd';
 import axiosinstans from '../lib/axios';
 import React, {useState, useEffect} from 'react';
 import { AxiosResponse } from 'axios';
+import { link } from 'fs';
 
 
 const { Sider } = Layout;
@@ -26,9 +27,10 @@ const Sidebar: React.FC<SiderProps> = (props) => {
   }, []);
 
   const menuItems = sidebarData.map((dataItem: any, index: number) => {
+    
     return {
       key:  `sub${index + 1}`,
-      icon: <img src={dataItem.iconPath} alt={`Icon ${index}`} />,
+      icon: <Avatar src={dataItem.iconPath} alt={dataItem.label} />,
       label: `sidenav ${index + 1}`,
       children: dataItem.links.map((link: any, j: number) => {
         return {
@@ -38,6 +40,7 @@ const Sidebar: React.FC<SiderProps> = (props) => {
       }),
     }
   })
+
 
   return (
     <Sider style={{ background: colorBgContainer }} width={200}>
