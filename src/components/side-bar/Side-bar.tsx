@@ -20,6 +20,7 @@ const Sidebar: React.FC<SiderProps> = (props) => {
       .then((response: AxiosResponse) => {
         const responseData = response.data;
         setSidebarData(responseData);
+        console.log(responseData);
       })
       .catch((error: any) => {
         console.error('Error fetching data:', error);
@@ -31,7 +32,7 @@ const Sidebar: React.FC<SiderProps> = (props) => {
     return {
       key:  `sub${index + 1}`,
       icon: <Avatar src={dataItem.iconPath} alt={dataItem.label} />,
-      label: `sidenav ${index + 1}`,
+      label: `${dataItem.type} `,
       children: dataItem.links.map((link: any, j: number) => {
         return {
           key: `${dataItem.type}${j}`,
