@@ -4,8 +4,7 @@ import { Layout } from 'antd';
 import Header from '../header';
 import Footer from '../footer/Footer';
 import ContentBody from '../content/Content';
-
-import './app.css'
+import SimpleSlider from '../simple-slider/simple-slider';
 
 class App extends Component {
 
@@ -13,6 +12,7 @@ class App extends Component {
         return (
             <Layout>
                 <Header />
+                <SimpleSlider/>
                 <ContentBody>
 
                 </ContentBody>
