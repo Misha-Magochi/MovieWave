@@ -1,35 +1,39 @@
 import { Avatar, SiderProps } from 'antd';
-import { Avatar, SiderProps } from 'antd';
 import { Layout, Menu, theme } from 'antd';
-import React from 'react';
+import axiosinstans from '../lib/axios';
+import React, {useState, useEffect} from 'react';
+import { AxiosResponse } from 'axios';
 
 const { Sider } = Layout;
-
-
-const items2: MenuProps['items'] = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
-  (icon, index) => {
-    const key = String(index + 1);
-
-    return {
-      key: `sub${key}`,
-      icon: React.createElement(icon),
-      label: `sidenav ${key}`,
-
-      children: new Array(4).fill(null).map((_, j) => {
-        const subKey = index * 4 + j + 1;
-        return {
-          key: subKey,
-          label: `option${subKey}`,
-        };
-      }),
-    };
-  },
-);
-
 const Sidebar: React.FC<SiderProps> = (props) => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+  const [sidebarData, setSidebarData] = useState([]);
+  useEffect(() => {
+    axiosinstans.get('/api/siderbar-link')
+      .then((response: AxiosResponse) => {
+        const responseData = response.data;
+        setSidebarData(responseData);
+      })
+      .catch((error: any) => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+  const menuItems = sidebarData.map((dataItem: any, index: number) => {
+    
+    return {
+      key:  `sub${index + 1}`,
+      icon: <Avatar src={dataItem.iconPath} alt={dataItem.label} />,
+      label: `${dataItem.type} `,
+      children: dataItem.links.map((link: any, j: number) => {
+        return {
+          key: `${dataItem.type}${j}`,
+          label: link.label,
+        };
+      }),
+    }
+  })
 
   return (
     <Sider style={{ background: colorBgContainer }} width={200}>
