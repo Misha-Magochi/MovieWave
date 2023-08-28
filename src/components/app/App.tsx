@@ -8,6 +8,7 @@ import ContentBody from '../content/Content';
 import SimpleSlider from '../simple-slider/simple-slider';
 
 class App extends Component {
+    
 
     render() {
         return (
