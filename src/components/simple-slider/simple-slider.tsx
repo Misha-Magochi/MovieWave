@@ -29,32 +29,33 @@ const SimpleSlider = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: itemsPerPage,
-    slidesToScroll: itemsPerPage,
+    slidesToShow: 8,
+    slidesToScroll: 8,
     prevArrow: <button className="slick-prev" onClick={() => sliderRef.current.slickPrev()}>Previous</button>,
     nextArrow: <button className="slick-next" onClick={() => sliderRef.current.slickNext()}>Next</button>,
     responsive: [
       {
-        breakpoint: 1260,
+        breakpoint: 1190,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 7,
+          slidesToScroll: 7,
         }
       },
       {
-        breakpoint: 992,
+        breakpoint: 1020,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: 6,
+          slidesToScroll: 6,
         }
       },
       {
-        breakpoint: 576,
+        breakpoint: 850,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
+          slidesToShow: 5,
+          slidesToScroll: 5,
         }
-      }
+      },
+
     ]
   };
 
