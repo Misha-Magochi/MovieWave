@@ -1,27 +1,28 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import axiosinstans from '../lib/axios';
-import { AxiosResponse } from 'axios';
+import { SliderProps } from './interfaces';
+import { SliderState } from './interfaces'
+import { fetchSliderData } from "../actions";
+
 
 import './simple-slider.css';
 
 const SimpleSlider = () => {
-  const [sliderData, setSliderData] = useState([]);
+  
+  const dispatch = useDispatch(); 
+  const sliderData = useSelector((state: { homePage: SliderState }) => state.homePage.sliderData || []);;
+  const loading = useSelector((state: { homePage: SliderState }) => state.homePage.loading);
+  const error = useSelector((state: { homePage: SliderState }) => state.homePage.error);
+  const [slidersData, setSlidersData] = useState([]);
   const itemsPerPage = 6;
 
   useEffect(() => {
-    axiosinstans.get('/api/home-page')
-      .then((response: AxiosResponse) => {
-        const responseData = response.data;
-        const combinedDocs = responseData.reduce((combined: any, obj: { doc: any; }) => [...combined, ...obj.doc], []);
-        setSliderData(combinedDocs);
-      })
-      .catch((error: any) => {
-        console.error('Error fetching data:', error);
-      });
-  }, []);
+    dispatch(fetchSliderData());
+    console.log('sliderData:', sliderData);  
+  }, [dispatch]);
 
   const sliderRef = useRef(null);
 
@@ -57,12 +58,12 @@ const SimpleSlider = () => {
       },
 
     ]
-  };
+  };  
 
   return (
     <div className="slider-container">
       <Slider {...settings} ref={sliderRef}>
-        {sliderData.map((dataItem) => (
+        {sliderData.map((dataItem: SliderProps) => (
           <div key={dataItem._id} className="slide">
             <div className="slide-content">
               <img src={dataItem.Poster} alt={dataItem.Title} className="slider-image" />
@@ -74,6 +75,8 @@ const SimpleSlider = () => {
       </Slider>
     </div>
   );
+
+  
 };
 
 export default SimpleSlider;

@@ -1,25 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import stickyFooterReducer from "";
-// import popupSlice from "";
-// import personalProfileSlice from "";
-// import leaveReviewSlice from "";
-// import adminSlice from "";
-// import createListingSlice from "";
-// import searchSlice from "";
-// import listingSlice from "";
-// import compareBanksSlice from "";
+import rootReducer from './components/reducers/rootReducer';
+
 
 export const store = configureStore({
   reducer: {
-    // stickyFooters: stickyFooterReducer,
-    // popups: popupSlice,
-    // personalProfile: personalProfileSlice,
-    // leaveReview: leaveReviewSlice,
-    // admin: adminSlice,
-    // createListing: createListingSlice,
-    // search: searchSlice,
-    // listing: listingSlice,
-    // compareBanks: compareBanksSlice
+    reducer: rootReducer,
   },
 });
 
