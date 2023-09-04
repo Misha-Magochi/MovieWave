@@ -3,23 +3,23 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { SliderProps } from './interfaces';
-import { useDispatch } from "react-redux";
-import { fetchSliderData } from "../reducers/actionCreators";
-
+import { useAppDispatch } from "../../redux/hooks";
 
 
 import './simple-slider.css';
+import { fetchHomePageMovies } from "../../redux/features/movies/moviesSlice";
 
 const SimpleSlider = () => {
-  
-  const dispatch = useDispatch(); 
-  
+
+  const dispatch = useAppDispatch();
+
   const [slidersData, setSlidersData] = useState([]);
 
-
   useEffect(() => {
-    dispatch(fetchSliderData()); 
-  }, [dispatch]);
+    console.log('gggggggggggggggggggggggggggg');
+
+    dispatch(fetchHomePageMovies());
+  }, []);
 
   const sliderRef = useRef(null);
 
@@ -54,7 +54,7 @@ const SimpleSlider = () => {
         }
       },
     ]
-  };  
+  };
 
   return (
     <div className="slider-container">

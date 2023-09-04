@@ -1,6 +1,6 @@
 import { Avatar, SiderProps } from 'antd';
 import { Layout, Menu, theme } from 'antd';
-import axiosinstans from '../lib/axios';
+import axiosinstans from '../../lib/axios';
 import React, {useState, useEffect} from 'react';
 import { AxiosResponse } from 'axios';
 
@@ -21,7 +21,7 @@ const Sidebar: React.FC<SiderProps> = (props) => {
       });
   }, []);
   const menuItems = sidebarData.map((dataItem: any, index: number) => {
-    
+
     return {
       key:  `sub${index + 1}`,
       icon: <Avatar src={dataItem.iconPath} alt={dataItem.label} />,

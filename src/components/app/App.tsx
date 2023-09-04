@@ -10,13 +10,11 @@ import SimpleSlider from '../simple-slider/simple-slider';
 
 
 class App extends Component {
-    
-
     render() {
         return (
             <Layout>
                 <Header />
-                <SimpleSlider/>
+                <SimpleSlider />
                 <ContentBody>
                 </ContentBody>
                 <Footer />
