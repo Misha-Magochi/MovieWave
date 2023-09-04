@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { SliderProps } from './interfaces';
-import { SliderState } from './interfaces'
-import { fetchSliderData } from "../actions";
+import { useDispatch } from "react-redux";
+import { fetchSliderData } from "../reducers/actionCreators";
+
 
 
 import './simple-slider.css';
@@ -13,15 +13,12 @@ import './simple-slider.css';
 const SimpleSlider = () => {
   
   const dispatch = useDispatch(); 
-  const sliderData = useSelector((state: { homePage: SliderState }) => state.homePage.sliderData || []);;
-  const loading = useSelector((state: { homePage: SliderState }) => state.homePage.loading);
-  const error = useSelector((state: { homePage: SliderState }) => state.homePage.error);
+  
   const [slidersData, setSlidersData] = useState([]);
-  const itemsPerPage = 6;
+
 
   useEffect(() => {
-    dispatch(fetchSliderData());
-    console.log('sliderData:', sliderData);  
+    dispatch(fetchSliderData()); 
   }, [dispatch]);
 
   const sliderRef = useRef(null);
@@ -56,27 +53,28 @@ const SimpleSlider = () => {
           slidesToScroll: 5,
         }
       },
-
     ]
   };  
 
   return (
     <div className="slider-container">
-      <Slider {...settings} ref={sliderRef}>
-        {sliderData.map((dataItem: SliderProps) => (
-          <div key={dataItem._id} className="slide">
-            <div className="slide-content">
-              <img src={dataItem.Poster} alt={dataItem.Title} className="slider-image" />
-              <div className="image-title">{dataItem.Title}</div>
-              <div className="image-genre">{dataItem.Genre.split(",")[0]}</div>
+      {slidersData && slidersData.length > 0 ? (
+        <Slider {...settings} ref={sliderRef}>
+          {slidersData.map((dataItem: SliderProps) => (
+            <div key={dataItem._id} className="slide">
+              <div className="slide-content">
+                <img src={dataItem.Poster} alt={dataItem.Title} className="slider-image" />
+                <div className="image-title">{dataItem.Title}</div>
+                <div className="image-genre">{dataItem.Genre.split(",")[0]}</div>
+              </div>
             </div>
-          </div>
-        ))}
-      </Slider>
+          ))}
+        </Slider>
+      ) : (
+        <div>Loading...</div>
+      )}
     </div>
   );
-
-  
 };
 
 export default SimpleSlider;

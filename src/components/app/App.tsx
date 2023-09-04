@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux';
 import { Layout } from 'antd';
-import { store } from '../../store';
+
 import Header from '../header';
 import Footer from '../footer/Footer';
 import ContentBody from '../content/Content';
@@ -14,16 +14,13 @@ class App extends Component {
 
     render() {
         return (
-            <Provider store={store}>
-                <Layout>
-                    <Header />
-                    <SimpleSlider/>
-                    <ContentBody>
-
-                    </ContentBody>
-                    <Footer />
-                </Layout>
-            </Provider>
+            <Layout>
+                <Header />
+                <SimpleSlider/>
+                <ContentBody>
+                </ContentBody>
+                <Footer />
+            </Layout>
         )
     }
 }

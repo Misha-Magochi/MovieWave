@@ -1,6 +1,6 @@
 
 
-const homePageReducer = (
+/* const homePageReducer = (
     state = {
       sliderData: [],
       loading: false,
@@ -11,25 +11,25 @@ const homePageReducer = (
     switch (action.type) {
       case 'FETCH_ITEMS_REQUEST':
         return {
-          ...state,
+          sliderData: [],
           loading: true,
           error: null,
         };
       case 'FETCH_ITEMS_SUCCESS':
         return {
-          ...state,
+          books: action.payload,
           loading: false,
           sliderData: action.payload,
         };
       case 'FETCH_ITEMS_FAILURE':
         return {
-          ...state,
+          sliderData: [],
           loading: false,
           error: action.payload,
         };
       default:
-        return state;
+        return state.sliderData;
     }
   };
   
-  export default homePageReducer;
+  export default homePageReducer; */
