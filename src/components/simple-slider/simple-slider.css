@@ -31,6 +31,11 @@
 .slider-image {
   width: 150px;
   height: 200px;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  transition: transform 0.3s;
 }
 .slick-slider {
   max-width: 1440px;
@@ -75,7 +80,27 @@
   border: none;
   color: rgb(24, 23, 23);
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.8s;
+}
+
+.slider-image::before,
+.slider-image::after {
+  content: "";
+  position: absolute;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  border: 2px solid #333;
+  transition: transform 0.3s;
+}
+
+
+
+.slider-image:hover {
+  position: relative;
+  transform: scale(1.08);
+  top: -5px;
+  border: 3px #1668dc;
+  
 }
 
 .slick-prev:hover,
@@ -85,6 +110,7 @@
 }
 
 .image-title:hover {
-  color: #4040bb;
+  color: #1668dc;
   font-size: 12px;
+  
 }

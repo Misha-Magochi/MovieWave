@@ -2,25 +2,23 @@ import React, { useState, useEffect, useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import axiosinstans from '../lib/axios';
-import { AxiosResponse } from 'axios';
+import { SliderProps } from './interfaces';
+import { useAppDispatch } from "../../redux/hooks";
+
 
 import './simple-slider.css';
+import { fetchHomePageMovies } from "../../redux/features/movies/moviesSlice";
 
 const SimpleSlider = () => {
-  const [sliderData, setSliderData] = useState([]);
-  const itemsPerPage = 6;
+
+  const dispatch = useAppDispatch();
+
+  const [slidersData, setSlidersData] = useState([]);
 
   useEffect(() => {
-    axiosinstans.get('/api/home-page')
-      .then((response: AxiosResponse) => {
-        const responseData = response.data;
-        const combinedDocs = responseData.reduce((combined: any, obj: { doc: any; }) => [...combined, ...obj.doc], []);
-        setSliderData(combinedDocs);
-      })
-      .catch((error: any) => {
-        console.error('Error fetching data:', error);
-      });
+    console.log('gggggggggggggggggggggggggggg');
+
+    dispatch(fetchHomePageMovies());
   }, []);
 
   const sliderRef = useRef(null);
@@ -55,23 +53,26 @@ const SimpleSlider = () => {
           slidesToScroll: 5,
         }
       },
-
     ]
   };
 
   return (
     <div className="slider-container">
-      <Slider {...settings} ref={sliderRef}>
-        {sliderData.map((dataItem) => (
-          <div key={dataItem._id} className="slide">
-            <div className="slide-content">
-              <img src={dataItem.Poster} alt={dataItem.Title} className="slider-image" />
-              <div className="image-title">{dataItem.Title}</div>
-              <div className="image-genre">{dataItem.Genre.split(",")[0]}</div>
+      {slidersData && slidersData.length > 0 ? (
+        <Slider {...settings} ref={sliderRef}>
+          {slidersData.map((dataItem: SliderProps) => (
+            <div key={dataItem._id} className="slide">
+              <div className="slide-content">
+                <img src={dataItem.Poster} alt={dataItem.Title} className="slider-image" />
+                <div className="image-title">{dataItem.Title}</div>
+                <div className="image-genre">{dataItem.Genre.split(",")[0]}</div>
+              </div>
             </div>
-          </div>
-        ))}
-      </Slider>
+          ))}
+        </Slider>
+      ) : (
+        <div>Loading...</div>
+      )}
     </div>
   );
 };
