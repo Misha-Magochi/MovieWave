@@ -2,7 +2,7 @@ import React from "react";
 
 import { Breadcrumb, Layout, theme } from "antd";
 const { Content, } = Layout;
-import Sidebar from "../side-bar/Side-bar";
+import Sidebar from "../side-bar/side-bar";
 
 const ContentBody = (_props: any) => {
     const {

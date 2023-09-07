@@ -4,9 +4,15 @@ export interface SliderState {
     error: string | null;
   }
 
-export interface SliderProps {
+export interface DocType {
     _id: number;
     Poster: string;
     Title: string;
     Genre: string;
+    
+}
+
+export interface DocType {
+  doc: any;
+  
 }
