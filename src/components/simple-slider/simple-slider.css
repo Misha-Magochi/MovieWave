@@ -101,13 +101,13 @@
 
 
 
-.slider-image:hover {
-  position: relative;
-  transform: scale(1.08);
-  top: -5px;
-  border: 3px #1668dc;
-  
-}
+  .slider-image:hover {
+    position: relative;
+    transform: scale(1.08);
+    top: -5px;
+    border: 3px #1668dc;
+    
+  }
 
 .slick-prev:hover,
 .slick-next:hover {

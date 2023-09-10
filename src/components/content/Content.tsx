@@ -1,8 +1,10 @@
 import React from "react";
-
-import { Breadcrumb, Layout, theme } from "antd";
+import { Layout, theme } from "antd";
 const { Content, } = Layout;
+
 import Sidebar from "../side-bar/side-bar";
+import HomePage from "../home-page/home-page";
+
 
 const ContentBody = (_props: any) => {
     const {
@@ -13,7 +15,9 @@ const ContentBody = (_props: any) => {
         <Content style={{ padding: '0 50px' }}>
             <Layout style={{ padding: '24px 0', background: colorBgContainer }}>
                 <Sidebar />
-                <Content style={{ padding: '0 24px', minHeight: 280 }}>Content</Content>
+                <Content style={{ padding: '0 24px', minHeight: 280 }}>
+                    <HomePage />
+                </Content>
             </Layout>
         </Content>
     )

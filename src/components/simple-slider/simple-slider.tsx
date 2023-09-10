@@ -13,7 +13,7 @@ import { fetchHomePageMovies } from "../../redux/features/movies/moviesSlice";
 const SimpleSlider = () => {
   const dispatch = useAppDispatch();
   const moviesData = useAppSelector((state) => state.homePageMovies.movies);
-  const loading = useAppSelector((state) => state.homePageMovies.loading) 
+  const loading = useAppSelector((state) => state.homePageMovies.loading);
 
   
 
@@ -30,7 +30,7 @@ const SimpleSlider = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 7 ,
+    slidesToShow: 7,
     slidesToScroll: 7,
     prevArrow: <button className="slick-prev" onClick={() => sliderRef.current.slickPrev()}>Previous</button>,
     nextArrow: <button className="slick-next" onClick={() => sliderRef.current.slickNext()}>Next</button>,

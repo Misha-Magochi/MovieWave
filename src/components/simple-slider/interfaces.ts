@@ -12,7 +12,3 @@ export interface DocType {
     
 }
 
-export interface DocType {
-  doc: any;
-  
-}
