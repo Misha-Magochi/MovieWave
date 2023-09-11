@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import imgNF from "../../img/imgFV.jpg";
 import "./movie-list.css";
 
 const MovieList = ({ movies, dataItem }) => {
@@ -24,7 +25,14 @@ const MovieList = ({ movies, dataItem }) => {
       <div className="movie-item-block">
         {movies.slice(0, showAll ? movies.length : 8).map((movie) => (
           <div key={movie._id} className="movie-item">
-            <img src={movie.Poster} alt={movie.Title} className="movie-image" />
+            <img
+             src={movie.Poster}
+              alt={movie.Title}
+               className="movie-image"
+               onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+                const target = e.target as HTMLImageElement;
+                target.src = imgNF;
+              }} />
             <h3 className="movie-title" >{movie.Title}</h3>
             <div className="movie-rls" >
             <span className="movie-gener" >{movie.Type}</span>

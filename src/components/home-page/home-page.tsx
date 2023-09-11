@@ -16,9 +16,6 @@ const HomePage = () => {
     dispatch(fetchHomePageMovies());
   }, [dispatch]);
 
-  console.log(moviesData);
-
-
   return (
     <div className="home-container">
       {loading ? (

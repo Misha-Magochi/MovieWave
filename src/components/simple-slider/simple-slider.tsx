@@ -6,7 +6,7 @@ import { DocType } from './interfaces';
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import Spinner from "../spinner/spinner";
 
-
+import imgNF from "../../img/imgFV.jpg";
 import './simple-slider.css';
 import { fetchHomePageMovies } from "../../redux/features/movies/moviesSlice";
 
@@ -68,7 +68,14 @@ const SimpleSlider = () => {
           {combinedMoviesData.map((dataItem) => (
             <div key={dataItem._id} className="slide">
               <div className="slide-content">
-                <img src={dataItem.Poster} alt={dataItem.Title} className="slider-image" />
+                <img 
+                src={dataItem.Poster} 
+                alt={dataItem.Title} 
+                className="slider-image"
+                onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = imgNF;
+                }} />
                 <div className="image-title">{dataItem.Title}</div>
                 <div className="image-genre">{dataItem.Genre ? dataItem.Genre.split(",")[0] : ""}</div>
               </div>
