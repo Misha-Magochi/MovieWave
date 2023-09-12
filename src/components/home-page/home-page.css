@@ -1,0 +1,26 @@
+.doc-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid #ccc;
+    margin: 10px;
+    padding: 10px;
+    width: 300px; 
+  }
+  
+
+  .doc-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+
+  .show-all-button {
+    align-self: flex-end;
+    padding: 5px 10px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin:  auto 0;
+    text-decoration: dashed;
+  }
