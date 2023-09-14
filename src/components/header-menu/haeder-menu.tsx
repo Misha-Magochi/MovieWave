@@ -1,10 +1,12 @@
 import React from 'react';
-import { Menu, Layout } from 'antd';
+import { Menu } from 'antd';
 import { MenuProps } from 'antd';
+import {  Link } from 'react-router-dom';
+import { Header } from 'antd/es/layout/layout';
 
-const { Header } = Layout;
 
 const HeaderMenu: React.FC = () => {
+
   const items1: MenuProps['items'] = ['1', '2', '3'].map((key) => ({
     key,
     label: `nav ${key}`,
@@ -13,7 +15,12 @@ const HeaderMenu: React.FC = () => {
   return (
     <Header style={{ display: 'flex', alignItems: 'center' }}>
       <div className="demo-logo" />
-      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} />
+      <Menu theme="dark" mode="horizontal" 
+      defaultSelectedKeys={['1']}
+       items={items1} >
+          <Link  to="/">nav 1</Link>
+          <Link to="/top-100">nav 2</Link>
+      </Menu>
     </Header>
   );
 };

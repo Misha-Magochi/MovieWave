@@ -14,7 +14,8 @@ const SimpleSlider = () => {
   const dispatch = useAppDispatch();
   const moviesData = useAppSelector((state) => state.homePageMovies.movies);
   const loading = useAppSelector((state) => state.homePageMovies.loading);
-
+  const error = useAppSelector((state) => state.homePageMovies.error);
+ 
   
 
   useEffect(() => {
@@ -63,7 +64,9 @@ const SimpleSlider = () => {
     <div className="slider-container">
       {loading ? (
         <Spinner /> 
-      ) : (
+      ) : error ? (
+      <div className="error-message">{error}</div>
+    ) : (
         <Slider {...settings} ref={sliderRef}>
           {combinedMoviesData.map((dataItem) => (
             <div key={dataItem._id} className="slide">

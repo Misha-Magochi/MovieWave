@@ -23,7 +23,7 @@ export const homePageMoviesSlice = createSlice({
     });
     builder.addCase(fetchHomePageMovies.rejected, (state) => {
       state.loading = false;
-      state.error = "Error occured while trying to fetch home page movies";
+      state.error = "Error occured while trying to fetch movies";
       state.movies = [];
     });
   },

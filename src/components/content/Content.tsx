@@ -3,7 +3,7 @@ import { Layout, theme } from "antd";
 const { Content, } = Layout;
 
 import Sidebar from "../side-bar/side-bar";
-import HomePage from "../home-page/home-page";
+import AppRouter from "../app-router/app-router";
 
 
 const ContentBody = (_props: any) => {
@@ -16,7 +16,7 @@ const ContentBody = (_props: any) => {
             <Layout style={{ padding: '24px 0', background: colorBgContainer }}>
                 <Sidebar />
                 <Content style={{ padding: '0 24px', minHeight: 280 }}>
-                    <HomePage />
+                    <AppRouter />
                 </Content>
             </Layout>
         </Content>

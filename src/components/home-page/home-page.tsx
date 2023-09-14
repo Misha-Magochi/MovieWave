@@ -11,6 +11,7 @@ const HomePage = () => {
   const dispatch = useAppDispatch();
   const moviesData = useAppSelector((state) => state.homePageMovies.movies);
   const loading = useAppSelector((state) => state.homePageMovies.loading);  
+  const error = useAppSelector((state) => state.homePageMovies.error);
 
   useEffect(() => {
     dispatch(fetchHomePageMovies());
@@ -20,6 +21,8 @@ const HomePage = () => {
     <div className="home-container">
       {loading ? (
         <Spinner />
+      ) : error ? (
+        <div className="error-message">{error}</div>
       ) : (
         <div className="home-content">
           {moviesData.map((dataItem: HomeProps) => (
