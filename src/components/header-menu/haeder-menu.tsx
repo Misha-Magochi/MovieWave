@@ -15,12 +15,14 @@ const HeaderMenu: React.FC = () => {
   return (
     <Header style={{ display: 'flex', alignItems: 'center' }}>
       <div className="demo-logo" />
-      <Menu theme="dark" mode="horizontal" 
-      defaultSelectedKeys={['1']}
-       items={items1} >
-          <Link  to="/">nav 1</Link>
-          <Link to="/top-100">nav 2</Link>
-      </Menu>
+      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
+      <Menu.Item key="1">
+        <Link to="/">nav 1</Link>
+      </Menu.Item>
+      <Menu.Item key="2">
+        <Link to="/top-100">nav 2</Link>
+      </Menu.Item>
+    </Menu>
     </Header>
   );
 };
