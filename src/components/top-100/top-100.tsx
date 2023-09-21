@@ -2,23 +2,31 @@ import React, { useEffect, useState } from 'react';
 import { useAppSelector } from '../../redux/hooks';
 import imgNF from "../../img/imgFV.jpg";
 import { DocType } from './interface';
+import { useParams } from 'react-router';
 
 
-const Top100: React.FC<{ genre: string }> = ({ genre }) => {
+const Top100: React.FC = () => {
     const moviesData = useAppSelector((state) => state.homePageMovies.movies as DocType[]);
     const [genreMovies, setGenreMovies] = useState<any[]>([]);
-  
+    const { genre } = useParams();
     useEffect(() => {
       const filteredMovies = moviesData
         .find((category: DocType) => category._id === genre)?.doc || [];
       setGenreMovies(filteredMovies);
     }, [genre, moviesData]);
+
+    const genreDescriptions = {
+        films: 'films',
+        series: 'series',
+        cartoon: 'cartoon',
+        anime: 'anime',
+      };
   
     return (
       <div>
         <span className='movie-head' >
             <div className='movie-head-title'> 
-            Watch all top 100 {genre === 'films' ? 'films' : 'series'}
+            Watch all top 100 {genreDescriptions[genre] || 'content'}
             </div>
             </span>
         <div className="movie-item-block">

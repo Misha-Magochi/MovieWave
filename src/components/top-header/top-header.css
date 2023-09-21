@@ -1,73 +1,24 @@
 
-.header-item-container {
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 150px;
-    width: 100%;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-left: 20px;
-  }
+
+
+
+.ant-menu.ant-menu-sub.ant-menu-vertical {
+background-color: #001529;
+}
+.ant-menu-overflow-item .ant-menu-submenu.ant-menu-submenu-horizontal {
+max-width: 160px;
+width: 100px;
+}
   
-  .header-item {
-    color: white;
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-  }
-  
-  .header-item:hover {
-    color: #1677ff;
-  }
-  
-  .header-item:hover .header-item-list {
-    display: flex;
-  }
-  
-  .header-item-list {
-    display: block;
-    flex-wrap: wrap;
-    position: absolute;
-    left: 0px;
-    top: 65px;
-    justify-content: space-around;
-    background-color: #001529;
-    box-shadow: 3px 4px 6px rgba(0, 0, 0, 5);
-    padding: 10px;
-    z-index: 1050;
-    margin: 0px;
-  }
-  
-  @keyframes header-item-list {
-    0% {
-      transform: scaleY(0);
-      opacity: 0;
-    }
-    100% {
-      transform: scaleY(1);
-      opacity: 1;
-    }
-  }
-  
-  .list-item {
-    display: flex;
-    color: white;
-    flex: 0 0 calc(50% - 20px);
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.3s ease-in-out;
-    border-radius: 10px;
-    padding: 0 auto;
-    width: 150px;
-    height: 40px;
-    
-  }
-  
-  .list-item:hover {
-    background-color: #1890ff;
-  }
-  
-  
-  
-  
+.ant-menu-light, :where(.css-dev-only-do-not-override-18iikkb).ant-menu-light>.ant-menu {
+background-color: transparent;
+color: white;
+}
+.ant-menu-item-group-list {
+  height: 180px;
+}
+
+
+.ant-menu-title-content:hover {
+  color: #1677ff;
+}

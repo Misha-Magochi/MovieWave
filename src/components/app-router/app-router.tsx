@@ -7,10 +7,7 @@ const AppRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/top-100/series" element={<Top100 genre="series"  />} />
-      <Route path="/top-100/films" element={<Top100 genre="films" />} />
-      <Route path="/top-100/cartoon" element={<Top100 genre="cartoon" />} />
-      <Route path="/top-100/anime" element={<Top100 genre="anime" />} />
+      <Route path="/top-100/:genre" element={<Top100 />} />
     </Routes>
   );
 };

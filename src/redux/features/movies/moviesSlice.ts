@@ -4,7 +4,6 @@ import axiosinstans from "../../../lib/axios";
 
 export const fetchHomePageMovies = createAsyncThunk("home/movies", async () => {
   const response = await axiosinstans.get("/api/home-page");
-  console.log(response.data);
   return response.data;
 });
 
