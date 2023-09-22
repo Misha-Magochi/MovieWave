@@ -5,11 +5,13 @@ import Providers from "../src/redux/provider";
 import { BrowserRouter as Router } from 'react-router-dom';
 
 
+
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Providers>
     <Router>
-    <App />
+      <App />
     </Router>
   </Providers>
 );

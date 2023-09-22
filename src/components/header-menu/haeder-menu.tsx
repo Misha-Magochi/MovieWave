@@ -3,10 +3,10 @@ import { Menu } from 'antd';
 import { MenuProps } from 'antd';
 import {  Link } from 'react-router-dom';
 import { Header } from 'antd/es/layout/layout';
+import TopHeader from '../top-header/top-header'
 
 
 const HeaderMenu: React.FC = () => {
-
   const items1: MenuProps['items'] = ['1', '2', '3'].map((key) => ({
     key,
     label: `nav ${key}`,
@@ -23,8 +23,11 @@ const HeaderMenu: React.FC = () => {
         <Link to="/top-100">nav 2</Link>
       </Menu.Item>
     </Menu>
+    <TopHeader />
     </Header>
   );
 };
 
 export default HeaderMenu;
+
+

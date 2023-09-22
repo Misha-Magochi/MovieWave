@@ -3,24 +3,16 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { DocType } from './interfaces';
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { useAppSelector } from "../../redux/hooks";
 import Spinner from "../spinner/spinner";
 
 import imgNF from "../../img/imgFV.jpg";
 import './simple-slider.css';
-import { fetchHomePageMovies } from "../../redux/features/movies/moviesSlice";
 
 const SimpleSlider = () => {
-  const dispatch = useAppDispatch();
   const moviesData = useAppSelector((state) => state.homePageMovies.movies);
   const loading = useAppSelector((state) => state.homePageMovies.loading);
   const error = useAppSelector((state) => state.homePageMovies.error);
- 
-  
-
-  useEffect(() => {
-    dispatch(fetchHomePageMovies());
-  }, []);
 
   const sliderRef = useRef(null);
   

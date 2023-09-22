@@ -5,6 +5,7 @@ import Footer from '../footer/Footer';
 import ContentBody from '../content/Content';
 
 
+
 import SimpleSlider from '../simple-slider/simple-slider';
 
 

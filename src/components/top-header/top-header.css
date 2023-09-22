@@ -1,0 +1,24 @@
+
+
+
+
+.ant-menu.ant-menu-sub.ant-menu-vertical {
+background-color: #001529;
+}
+.ant-menu-overflow-item .ant-menu-submenu.ant-menu-submenu-horizontal {
+max-width: 160px;
+width: 100px;
+}
+  
+.ant-menu-light, :where(.css-dev-only-do-not-override-18iikkb).ant-menu-light>.ant-menu {
+background-color: transparent;
+color: white;
+}
+.ant-menu-item-group-list {
+  height: 180px;
+}
+
+
+.ant-menu-title-content:hover {
+  color: #1677ff;
+}
