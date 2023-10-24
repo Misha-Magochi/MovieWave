@@ -17,10 +17,19 @@ const HeaderMenu: React.FC = () => {
       <div className="demo-logo" />
       <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
       <Menu.Item key="1">
-        <Link to="/">nav 1</Link>
+        <Link to="/">main</Link>
       </Menu.Item>
       <Menu.Item key="2">
-        <Link to="/top-100">nav 2</Link>
+        <Link to="/films">Films</Link>
+      </Menu.Item>
+      <Menu.Item key="3">
+        <Link to="/series">Series</Link>
+      </Menu.Item>
+      <Menu.Item key="4">
+        <Link to="/cartoon">Cartoon</Link>
+      </Menu.Item>
+      <Menu.Item key="5">
+        <Link to="/anime">Anime</Link>
       </Menu.Item>
     </Menu>
     <TopHeader />

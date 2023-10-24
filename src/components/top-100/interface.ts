@@ -1,8 +1,10 @@
+
+
 export interface DocType {
-    doc: any;
+    doc: any[];
     _id: string;
     Poster: string;
     Title: string;
-    Genre: string;
-    
-}
+    Type: string;
+    Released: string;
+  }
