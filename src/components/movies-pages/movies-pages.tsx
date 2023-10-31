@@ -5,6 +5,7 @@ import Spinner from "../spinner/spinner";
 import imgNF from "../../img/imgFV.jpg";
 import "./movies-pages.css";
 
+
 const typeMovies = {
     films: 'films',
     series: 'series',
@@ -12,7 +13,7 @@ const typeMovies = {
     anime: 'anime',
 };
 
-const MoviesPage = () => {
+const MoviesPages = () => {
     const { movieType } = useParams();
     const [movies, setMovies] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -73,5 +74,5 @@ const MoviesPage = () => {
 
 };
 
-export default MoviesPage;
+export default MoviesPages;
 
