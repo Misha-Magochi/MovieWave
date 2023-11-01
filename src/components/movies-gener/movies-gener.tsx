@@ -16,16 +16,12 @@ function MoviesGener() {
                 const response = await axiosinstans.get('/api/routing-movies', {
                     params: {
                         movieByType: movieType,
-                        movieGener: movieGener,
                         sortedBy: 'imdbRating',
+                        movieByGenre: movieGener,
                     },
                 });
 
-                const filteredMovies = response.data.result.filter((movie) => {
-                    return movie.Genre && movie.Genre.toLowerCase().includes(movieGener.toLowerCase());
-                });
-
-                setMovies(filteredMovies);
+                setMovies(response.data.result);
                 setLoading(false);
             } catch (error) {
                 console.error('Error:', error);
@@ -36,39 +32,40 @@ function MoviesGener() {
         fetchData();
     }, [movieType, movieGener]);
 
+
     return (
         <div className="movie-list">
-            {loading ? (
-                <Spinner />
-            ) : (
-                <>
-                    <div className="movie-head">
-                        <span className="movie-head-title">Watch {movieType} of {movieGener} </span>
+          {loading ? (
+            <Spinner />
+          ) : (
+            <>
+              <div className="movie-head">
+              <span className="movie-head-title">Watch {movieType} of {movieGener} </span>
+              </div>
+              <div className="movie-item-block">
+                {movies[0].map((movie) => (
+                  <div key={movie._id} className="movie-item">
+                    <img
+                      src={movie.Poster}
+                      alt={movie.Title}
+                      className="movie-image"
+                      onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = imgNF;
+                      }}
+                    />
+                    <h3 className="movie-title">{movie.Title}</h3>
+                    <div className="movie-rls">
+                      <span className="movie-gener">{movie.Type}</span>
+                      <div>{movie.Released}</div>
                     </div>
-                    <div className="movie-item-block">
-                        {movies.map((movie) => (
-                            <div key={movie._id} className="movie-item">
-                                <img
-                                    src={movie.Poster}
-                                    alt={movie.Title}
-                                    className="movie-image"
-                                    onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-                                        const target = e.target as HTMLImageElement;
-                                        target.src = imgNF;
-                                    }}
-                                />
-                                <h3 className="movie-title">{movie.Title}</h3>
-                                <div className="movie-rls">
-                                    <span className="movie-gener">{movie.Type}</span>
-                                    <div>{movie.Released}</div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </>
-            )}
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </div>
-    );
+      );
 }
 
 export default MoviesGener;
