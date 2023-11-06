@@ -1,21 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";   
-import axiosinstans from "../../lib/axios";
-import Spinner from "../spinner/spinner";
-import imgNF from "../../img/imgFV.jpg";
-import "./movies-pages.css";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axiosinstans from '../../lib/axios';
+import Spinner from '../spinner/spinner';
+import imgNF from '../../img/imgFV.jpg';
+import './movies-gener.css';
 
-
-const typeMovies = {
-    films: 'films',
-    series: 'series',
-    cartoon: 'cartoon',
-    anime: 'anime',
-};
-
-const MoviesPages = () => {
-    const { movieType } = useParams();
-    const [movies, setMovies] = useState(null);
+function MoviesGener() {
+    const { movieType, movieGener } = useParams();
+    const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -24,9 +16,11 @@ const MoviesPages = () => {
                 const response = await axiosinstans.get('/api/routing-movies', {
                     params: {
                         movieByType: movieType,
-                        sortedBy: 'imdbRating'
-                    }
+                        sortedBy: 'imdbRating',
+                        movieByGenre: movieGener,
+                    },
                 });
+
                 setMovies(response.data.result);
                 setLoading(false);
             } catch (error) {
@@ -34,9 +28,10 @@ const MoviesPages = () => {
                 setLoading(false);
             }
         };
-    
+
         fetchData();
-    }, [movieType]);
+    }, [movieType, movieGener]);
+
 
     return (
         <div className="movie-list">
@@ -45,7 +40,7 @@ const MoviesPages = () => {
           ) : (
             <>
               <div className="movie-head">
-                <span className="movie-head-title">Watch all {typeMovies[movieType]}</span>
+              <span className="movie-head-title">Watch {movieType} of {movieGener} </span>
               </div>
               <div className="movie-item-block">
                 {movies[0].map((movie) => (
@@ -71,8 +66,11 @@ const MoviesPages = () => {
           )}
         </div>
       );
+}
 
-};
+export default MoviesGener;
 
-export default MoviesPages;
+
+
+
 
