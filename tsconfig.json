@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+      "moduleResolution": "node",
+      "types": [ "react", "react-dom", "node"],
+      "target": "ES6",
+      "module": "ESNext",
+      "jsx": "preserve",
+      "strict": false,
+      "esModuleInterop": true
+    },
+    "include": ["src/**/*.ts", "src/**/*.d.ts"]
+  }
