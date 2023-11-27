@@ -23,30 +23,26 @@ const Top100: React.FC = () => {
       </span>
       <div className="movie-item-block">
         {genreMovies.map((movie: DocType) => (
-          <Link
-  key={movie._id}
-  to={`
-  /${encodeURIComponent(movie.Type)}
-  /${encodeURIComponent(movie[0]?.Genre)}
-  /${encodeURIComponent(encodeURI(movie.Title))}
-  /${movie._id}`}
-  className="movie-item"
->
-            <img
-              src={movie.Poster}
-              alt={movie.Title}
-              className="movie-image"
-              onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-                const target = e.target as HTMLImageElement;
-                target.src = imgNF;
-              }}
-            />
-            <h3 className="movie-title">{movie.Title}</h3>
-            <div className="movie-rls">
-              <span className="movie-gener">{movie.Type}</span>
-              <div>{movie.Released}</div>
-            </div>
-          </Link>
+          <div className="movie-item">
+            <Link
+              key={movie._id}
+              to={`/${movie.Type}/${encodeURIComponent(movie[0]?.Genre)}/${encodeURIComponent(encodeURI(movie.Title))}/${movie._id}`}>
+              <img
+                src={movie.Poster}
+                alt={movie.Title}
+                className="movie-image"
+                onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = imgNF;
+                }}
+              />
+              <h3 className="movie-title">{movie.Title}</h3>
+              <div className="movie-rls">
+                <span className="movie-gener">{movie.Type}</span>
+                <div>{movie.Released}</div>
+              </div>
+            </Link>
+          </div>
         ))}
       </div>
     </div>

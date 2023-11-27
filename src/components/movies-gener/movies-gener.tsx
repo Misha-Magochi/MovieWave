@@ -52,12 +52,7 @@ function MoviesGener() {
               <div className="movie-item-block">
                 {movies[0].map((movie) => (
                   <div key={movie._id} className="movie-item">
-                     <Link to={`
-                     I can’t configure routing/${movie.Type}
-                     /${movie.Genre}
-                     /${encodeURIComponent(movie.Title)}
-                     /${movie._id}`}
-                     >
+                     <Link to={`/${movie.Type}/${movie.Genre}/${encodeURIComponent(movie.Title)}/${movie._id}`}>
                       <img
                         src={movie.Poster}
                         alt={movie.Title}

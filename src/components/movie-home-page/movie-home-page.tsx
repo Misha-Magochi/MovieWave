@@ -1,24 +1,30 @@
-import React, { useEffect, useState, useRef } from "react";
-import { useParams } from "react-router";
-import axiosinstans from "../../lib/axios";
 import Spinner from "../spinner/spinner";
-import { PlayCircleOutlined } from '@ant-design/icons';
+import CustomRating from "./CustomRating";
+import MovieInfo from "../movie-info/MovieInfo";
+import MoviePlayer from "../movie-player/MoviePlayer";
+import SimilarMovies from "../similar-movies/SimilarMovies";
 import { Movie } from "./interfaces";
-import { Button } from "antd";
-
+import { HeartTwoTone } from "@ant-design/icons";
 // @ts-ignore
 import video from "../../video/videoplayback.mp4";
 // @ts-ignore
 import imgNF from "../../img/imgFV.jpg";
 import "./movie-home-page.css";
+import { Link, useParams } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import axiosinstans from "../../lib/axios";
+import React from "react";
 
 const MovieHomePage = () => {
-    const { movieId } = useParams<{ movieId?: string }>();
-    const [loading, setLoading] = useState(true);
-    const [movie, setMovie] = useState<Movie | null>(null);
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [showButton, setShowButton] = useState(true);
-    const videoRef = useRef<HTMLVideoElement | null>(null);
+  const { movieId } = useParams<{ movieId?: string }>();
+  const [loading, setLoading] = useState(true);
+  const [movie, setMovie] = useState<Movie | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [showButton, setShowButton] = useState(true);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+  const [rating, setRating] = useState<number | undefined>(undefined);
 
   useEffect(() => {
     const fetchSingleMovie = async () => {
@@ -49,6 +55,18 @@ const MovieHomePage = () => {
     }
   };
 
+  const handleHover = () => {
+    setIsHovered(!isClicked);
+  };
+
+  const handleClick = () => {
+    setIsClicked(!isClicked);
+  };
+
+  const handleRateChange = (value: number | undefined) => {
+    setRating(value);
+  };
+
   return (
     <div className="container-movie_h">
       {loading ? (
@@ -57,66 +75,33 @@ const MovieHomePage = () => {
         <>
           <div className="movie-head">
             <span className="title-movie">{movie.film.Title}</span>
+            <button
+              className={`similar-movies-icon ${isHovered ? "hover" : "#1677ff"} ${
+                isClicked ? "clicked" : ""
+              }`}
+              onClick={handleClick}
+              onMouseEnter={handleHover}
+              onMouseLeave={handleHover}
+            >
+              <HeartTwoTone
+                twoToneColor={isClicked ? "#fff" : "#fb3b5b"}
+              />
+            </button>
           </div>
-          <div className="block-movie-page">
-            <img
-              className="movie-image"
-              src={movie.film.Poster}
-              alt={movie.film.Title}
-              onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-                const target = e.target as HTMLImageElement;
-                target.src = imgNF;
-              }}
-            />
-            <div className="block_p">
-              <ul className="block_description">
-                <li><b className="text-b">Rated:</b> {movie.film.Rated}</li>
-                <li><b className="text-b">Year:</b> {movie.film.Year}</li>
-                <li><b className="text-b">Released:</b> {movie.film.Released}</li>
-                <li><b className="text-b">Country:</b> {movie.film.Country}</li>
-                <li><b className="text-b">Runtime:</b> {movie.film.Runtime}</li>
-                <li><b className="text-b">Genre:</b> {movie.film.Genre}</li>
-                <li><b className="text-b">Actors:</b> {movie.film.Actors}</li>
-              </ul>
-            </div>
+          <MovieInfo movie={movie} />
+          <div className="rate-block">
+            <span className="rate-text">Rate the Movie: </span>
+            <CustomRating onChange={handleRateChange} value={rating} />
+            {rating !== undefined ? (
+              <span className="rate-text" style={{ color: '#fff' }}> {rating} /5 stars</span>
+            ) : (
+              <span className="rate-text" style={{ color: '#fff' }}> No vote, be the first</span>
+            )}
           </div>
           <div className="plot-block"><span>{movie.film.Plot}</span></div>
-          <div className="head-player">{movie.film.Title}</div>
-          <div className="video-container">
-            <video ref={videoRef} controls className="film_video" src={video}></video>
-            <Button
-              className="btn_play"
-              icon={<PlayCircleOutlined style={{ fontSize: "50px", color: "#fff" }} />}
-              onClick={playVideo}
-              style={{
-                display: showButton ? "block" : "none",
-              }}
-            ></Button>
-          </div>
+          <MoviePlayer movie={movie} playVideo={playVideo} showButton={showButton} videoRef={videoRef} />
           {movie.similarFilm && movie.similarFilm.length > 0 && (
-            <div>
-              <div className="movie-head">Watch more fo Similar movies</div>
-              <div className="block-similar-movie">
-                {movie.similarFilm.map((film) => (
-                  <div key={film._id} className="movie-item-similar">
-                    <img
-                      src={film.Poster}
-                      alt={film.Title}
-                      className="movie-image"
-                      onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-                        const target = e.target as HTMLImageElement;
-                        target.src = imgNF;
-                      }}
-                    />
-                    <h4 className="movie-title">{film.Title}</h4>
-                    <div className="movie-rls">
-                      <span className="movie-gener">{film.Type}</span>
-                      <div>{film.Released}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <SimilarMovies similarFilms={movie.similarFilm} />
           )}
         </>
       ) : (

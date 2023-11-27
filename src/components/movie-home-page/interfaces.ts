@@ -1,4 +1,5 @@
 export interface Movie {
+    Genre: any;
     _id: string;
     film: {
       Title: string;

@@ -12,10 +12,44 @@
     margin: 0;
 
 }
+
+.similar-movies-icon {
+    font-size: 24px; 
+    cursor: pointer;
+    padding: 0 10px;
+    border: none;
+    background-color: transparent;
+  }
+  
+  .similar-movies-icon:hover {
+    color: #1677ff;  
+  }
+  
+  .similar-movies-icon.clicked {
+    background-color: transparent; 
+  }
+  
+  .similar-movies-icon.clicked .Antioch {
+    color: #fb3b5b; 
+  }
+
 .block-movie-page {
     display: flex;
     height: 324px;
     padding: 12px 10px ;
+}
+
+.rate-block {
+    background-color: #001529;
+    padding: 5px 15px;
+    height: 40px;
+    display: flex;
+    text-align: center;
+}
+
+.rate-text{
+    color: #fff;
+    margin-top: 7px;
 }
 
 .block_p {

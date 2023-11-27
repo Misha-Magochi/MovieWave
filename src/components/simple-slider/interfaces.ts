@@ -5,6 +5,8 @@ export interface SliderState {
   }
 
 export interface DocType {
+    Type: any;
+    doc: any;
     _id: number;
     Poster: string;
     Title: string;

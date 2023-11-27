@@ -53,12 +53,7 @@ const MoviesPages = () => {
           <div className="movie-item-block">
           {movies.length > 0 && movies[0] && movies[0].map((movie) => (
             <div key={movie._id} className="movie-item">
-              <Link to={`
-              /${movie[0]?.Type}
-              /${movie.Genre}
-              /${encodeURIComponent(movie[0]?.Title)}
-              /${movie._id}`}
-              >
+              <Link to={`/${movie[0]?.Type}/${movie.Genre}/${encodeURIComponent(movie[0]?.Title)}/${movie._id}`}>
                 <img
                   src={movie.Poster || imgNF}
                   alt={movie.Title || ''}

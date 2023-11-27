@@ -25,12 +25,7 @@ const MovieList = ({ movies, dataItem }) => {
       <div className="movie-item-block">
         {movies.slice(0, showAll ? movies.length : 8).map((movie) => (
           <div key={movie._id} className="movie-item">
-          <Link to={`
-          /${encodeURIComponent(dataItem.doc[0]?.Type)}
-          /${encodeURIComponent(dataItem.doc[0]?.Genre)}
-          /${encodeURIComponent(encodeURI(dataItem.doc[0]?.Title))}
-          /${movie._id}`}
-          >
+            <Link to={`/${encodeURIComponent(dataItem.doc[0]?.Type)}/${encodeURIComponent(dataItem.doc[0]?.Genre)}/${encodeURIComponent(encodeURI(dataItem.doc[0]?.Title))}/${movie._id}`}>
               <img
                 src={movie.Poster}
                 alt={movie.Title}

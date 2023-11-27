@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -63,14 +63,7 @@ const SimpleSlider = () => {
       ) : (
         <Slider {...settings} ref={sliderRef}>
           {combinedMoviesData.map((dataItem, index) => (
-            <Link
-              key={index}
-              to={`
-              /${(dataItem[0]?.Type)}
-              /${(dataItem.Genre)}
-              /${(encodeURIComponent(dataItem[0]?.Title))}
-              /${dataItem._id}`}
-            >
+              <Link key={index} to={`/${dataItem.Type || 'unknown'}/${(dataItem.Genre && dataItem.Genre.split(",")[0]) || 'unknown'}/${dataItem._id}`}>
               <div className="slide">
                 <div className="slide-content">
                   <img 
