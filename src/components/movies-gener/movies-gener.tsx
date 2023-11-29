@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+<<<<<<< HEAD
 import { useParams } from 'react-router-dom';
 import axiosinstans from '../../lib/axios';
 import Spinner from '../spinner/spinner';
@@ -8,12 +9,34 @@ import './movies-gener.css';
 function MoviesGener() {
     const { movieType, movieGener } = useParams();
     const [movies, setMovies] = useState([]);
+=======
+import { Link, useParams } from 'react-router-dom';
+import axiosinstans from '../../lib/axios';
+import Spinner from '../spinner/spinner';
+
+// @ts-ignore
+import imgNF from '../../img/imgFV.jpg';
+import { Movie } from './interfaces';
+import './movies-gener.css';
+
+interface MoviesResponse {
+  result: Movie[];
+}
+
+function MoviesGener() {
+    const { movieType, movieGener } = useParams();
+    const [movies, setMovies] = useState<Movie[]>([]);
+>>>>>>> feature-movieHomePage
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
+<<<<<<< HEAD
                 const response = await axiosinstans.get('/api/routing-movies', {
+=======
+                const response = await axiosinstans.get<MoviesResponse>('/api/routing-movies', {
+>>>>>>> feature-movieHomePage
                     params: {
                         movieByType: movieType,
                         sortedBy: 'imdbRating',
@@ -45,6 +68,7 @@ function MoviesGener() {
               <div className="movie-item-block">
                 {movies[0].map((movie) => (
                   <div key={movie._id} className="movie-item">
+<<<<<<< HEAD
                     <img
                       src={movie.Poster}
                       alt={movie.Title}
@@ -59,6 +83,24 @@ function MoviesGener() {
                       <span className="movie-gener">{movie.Type}</span>
                       <div>{movie.Released}</div>
                     </div>
+=======
+                     <Link to={`/${movie.Type}/${movie.Genre}/${encodeURIComponent(movie.Title)}/${movie._id}`}>
+                      <img
+                        src={movie.Poster}
+                        alt={movie.Title}
+                        className="movie-image"
+                        onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = imgNF;
+                        }}
+                      />
+                      <h3 className="movie-title">{movie.Title}</h3>
+                      <div className="movie-rls">
+                        <span className="movie-gener">{movie.Type}</span>
+                        <div>{movie.Released}</div>
+                      </div>
+                    </Link>
+>>>>>>> feature-movieHomePage
                   </div>
                 ))}
               </div>

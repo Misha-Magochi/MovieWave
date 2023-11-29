@@ -3,6 +3,10 @@
     "@reduxjs/toolkit": "^1.9.5",
     "antd": "^5.8.3",
     "axios": "^1.4.0",
+<<<<<<< HEAD
+=======
+    "node-fetch": "^3.3.2",
+>>>>>>> feature-movieHomePage
     "react": "^18.2.0",
     "react-redux": "^8.1.2",
     "react-router": "^6.15.0",
@@ -33,9 +37,21 @@
     ]
   },
   "devDependencies": {
+<<<<<<< HEAD
     "@types/node": "^20.5.0",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
     "@types/react-slick": "^0.23.10"
   }
 }
+=======
+    "@svgr/webpack": "^8.1.0",
+    "@types/node": "^20.5.0",
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
+    "@types/react-slick": "^0.23.10",
+    "file-loader": "^6.2.0",
+    "url-loader": "^4.1.1"
+  }
+}
+>>>>>>> feature-movieHomePage
