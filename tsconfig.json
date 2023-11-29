@@ -7,10 +7,7 @@
       "jsx": "preserve",
       "strict": false,
       "esModuleInterop": true
-<<<<<<< HEAD
-    }
-=======
+
     },
     "include": ["src/**/*.ts", "src/**/*.d.ts"]
->>>>>>> feature-movieHomePage
   }
