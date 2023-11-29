@@ -3,16 +3,9 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { fetchHomePageMovies } from "../../redux/features/movies/moviesSlice";
 import { HomeProps } from "./interfaces";
 import Spinner from "../spinner/spinner";
-<<<<<<< HEAD
-import MovieList from "../movise-list-item/movie-list";
-
-import "./home-page.css";
-=======
 import MovieList from "../movies-list-item/movie-list";
 
 import "./home-page.css";
-import { Link } from "react-router-dom";
->>>>>>> feature-movieHomePage
 
 const HomePage = () => {
   const dispatch = useAppDispatch();

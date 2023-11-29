@@ -1,9 +1,6 @@
 declare module "*.jpg";
 declare module "*.png";
 declare module "*.jpeg";
-<<<<<<< HEAD
-declare module "*.gif";
-=======
 declare module "*.gif";
 declare module '*.jpg' {
     const src: string;
@@ -19,4 +16,3 @@ declare module '*.jpg' {
     const src: string;
     export default src;
   }
->>>>>>> feature-movieHomePage

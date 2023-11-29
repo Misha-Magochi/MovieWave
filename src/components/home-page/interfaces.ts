@@ -12,10 +12,7 @@ export interface Doc {
   }
 
 export interface HomeProps {
-<<<<<<< HEAD
-=======
     Type: any;
->>>>>>> feature-movieHomePage
     doc: Movie[]; 
     _id: string;
     Title: string;

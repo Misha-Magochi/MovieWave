@@ -5,11 +5,8 @@ export interface SliderState {
   }
 
 export interface DocType {
-<<<<<<< HEAD
-=======
-    Type: any;
+    Type: string;
     doc: any;
->>>>>>> feature-movieHomePage
     _id: number;
     Poster: string;
     Title: string;
