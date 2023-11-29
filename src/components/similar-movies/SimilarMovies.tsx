@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import imgNF from "../../img/imgFV.jpg";
 
 const SimilarMovies = ({ similarFilms }) => {
+    
   return (
     <div>
       <div className="movie-head">Watch more for Similar movies </div>

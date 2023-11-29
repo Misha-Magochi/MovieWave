@@ -12,6 +12,12 @@ const MovieList = ({ movies, dataItem }) => {
     setShowAll(!showAll);
   };
 
+  const docItem = dataItem.doc[0];
+
+  const { Type, Genre, Title } = docItem || {};
+
+  const encodedURL = `/${encodeURIComponent(Type)}/${encodeURIComponent(Genre)}/${encodeURIComponent(encodeURI(Title))}`;
+
   return (
     <div className="movie-list">
       <div className="movie-head">
@@ -25,7 +31,7 @@ const MovieList = ({ movies, dataItem }) => {
       <div className="movie-item-block">
         {movies.slice(0, showAll ? movies.length : 8).map((movie) => (
           <div key={movie._id} className="movie-item">
-            <Link to={`/${encodeURIComponent(dataItem.doc[0]?.Type)}/${encodeURIComponent(dataItem.doc[0]?.Genre)}/${encodeURIComponent(encodeURI(dataItem.doc[0]?.Title))}/${movie._id}`}>
+            <Link to={`${encodedURL}/${movie._id}`}>
               <img
                 src={movie.Poster}
                 alt={movie.Title}
